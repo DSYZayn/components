@@ -1,0 +1,44 @@
+{
+  "name": "@heyzayn/components",
+  "version": "0.0.3",
+  "type": "module",
+  "main": "dist/components.cjs.js",
+  "module": "dist/components.es.js",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "vue3",
+    "components",
+    "chatui",
+    "chatui-vue3"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DSYZayn/components"
+  },
+  "scripts": {
+    "dev": "bunx --bun vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "package.json"
+  ],
+  "peerDependencies": {
+    "vue": "^3.4.21"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vite-plugin-dts": "^3.8.3",
+    "vite-plugin-libcss": "^1.1.1",
+    "vue": "^3.4.21",
+    "vue-tsc": "^2.0.6"
+  }
+}
