@@ -37,7 +37,7 @@
           lineHeight: '1.5rem',
         }"
       >
-        {{botName ? botName : 'ChatBot'}}
+        {{ botName ? botName : "ChatBot" }}
       </div>
       <div
         :style="{
@@ -94,16 +94,15 @@
 import ChatIcon from "./ChatIcon.vue";
 
 defineProps<{
-  bgColorHeader?: string,
-  bgColorIcon?: string,
-  fillColorIcon?: string,
-  textColorHeader?: string,
-  offline?: boolean,
-  colorOffline?: string,
-  colorOnline?: string,
-  closeChat: () => void,
-  botName?: string,
-  headerHeight?: string
-}>()
-
+  bgColorHeader?: string;
+  bgColorIcon?: string;
+  fillColorIcon?: string;
+  textColorHeader?: string;
+  offline?: boolean;
+  colorOffline?: string;
+  colorOnline?: string;
+  closeChat: () => void;
+  botName?: string;
+  headerHeight?: string;
+}>();
 </script>

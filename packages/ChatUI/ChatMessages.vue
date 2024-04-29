@@ -71,45 +71,43 @@
 
 <script lang="ts" setup>
 import { ref, defineProps, watch, computed } from "vue";
-import { type message } from './message';
+import { type message } from "./message";
 
 const props = defineProps<{
-    bgColorChat?: string,
-    chat: message[],
-    bgColorMessagePerson?: string,
-    textColorMessagePerson?: string,
-    bgColorMessageTimestamp?: string,
-    textColorMessageTimestamp?: string,
-    bgColorMessageChatbot?: string,
-    textColorMessageChatbot?: string,
+  bgColorChat?: string;
+  chat: message[];
+  bgColorMessagePerson?: string;
+  textColorMessagePerson?: string;
+  bgColorMessageTimestamp?: string;
+  textColorMessageTimestamp?: string;
+  bgColorMessageChatbot?: string;
+  textColorMessageChatbot?: string;
 }>();
 
 const chatContainer = ref<HTMLDivElement | null>(null);
-const chatElementAdded = ref(false)
+const chatElementAdded = ref(false);
 
-const onUpdateHook0 = computed(() => props.chat.length)
+const onUpdateHook0 = computed(() => props.chat.length);
 console.log(props.chat[-1]);
 
-const onUpdatedHook1 = computed(() => props.chat.at(-1)?.message?.length)
+const onUpdatedHook1 = computed(() => props.chat.at(-1)?.message?.length);
 
 watch(onUpdateHook0, () => {
-  if(chatContainer.value && !chatElementAdded.value){
-    
-    scrollToEnd(chatContainer.value)
-    chatElementAdded.value = true
+  if (chatContainer.value && !chatElementAdded.value) {
+    scrollToEnd(chatContainer.value);
+    chatElementAdded.value = true;
   }
-})
+});
 watch(onUpdatedHook1, () => {
-  if(chatContainer.value && chatElementAdded.value){
-    
-    scrollToEnd(chatContainer.value)
+  if (chatContainer.value && chatElementAdded.value) {
+    scrollToEnd(chatContainer.value);
   }
-})
+});
 
-function scrollToEnd(container:HTMLElement) {
-    const containerHeight = container.clientHeight;
-    const contentHeight = container.scrollHeight;
-    container.scrollTop = contentHeight - containerHeight;
+function scrollToEnd(container: HTMLElement) {
+  const containerHeight = container.clientHeight;
+  const contentHeight = container.scrollHeight;
+  container.scrollTop = contentHeight - containerHeight;
 }
 </script>
 

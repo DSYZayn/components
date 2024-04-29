@@ -55,20 +55,20 @@
 <script lang="ts" setup>
 import { ref, defineProps } from "vue";
 const props = defineProps<{
-    handleSend: (message: string) => void;
-    inputHeight?: string,
-    bgColorInput?: string,
-    textColorInput?: string,
-    inputPlaceholder?: string,
+  handleSend: (message: string) => void;
+  inputHeight?: string;
+  bgColorInput?: string;
+  textColorInput?: string;
+  inputPlaceholder?: string;
 }>();
 
 const inputField = ref("");
 
 function sendMessage(e: Event) {
-    e.preventDefault();
-    if (props.handleSend) props.handleSend(inputField.value);
-    inputField.value = "";
-  }
+  e.preventDefault();
+  if (props.handleSend) props.handleSend(inputField.value);
+  inputField.value = "";
+}
 </script>
 
 <style scoped>

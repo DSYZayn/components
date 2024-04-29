@@ -1,10 +1,11 @@
 import type { Config } from 'tailwindcss'
+import daisyui from 'daisyui';
 
 export default {
-  content: [],
+  content: ['./examples/**/*.{js,ts,jsx,tsx,vue}', 'index.html', './packages/**/*.{js,ts,jsx,tsx,vue}'],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [daisyui],
 } satisfies Config
 

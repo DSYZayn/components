@@ -1,10 +1,20 @@
 import type { App, Plugin } from 'vue';
-import Chat from './Chat.vue';
+import Chat, { type ChatProps } from './Chat.vue';
+import OpenaiChat, { type OpenaiChatProps } from './OpenaiChat.vue';
+import getResponse from '../utils/Boredapi';
 import { type message } from './message';
 
 export const ChatPlugin: Plugin = {
   install(app: App) {
     app.component('Chat', Chat);
+    app.component('OpenaiChat', OpenaiChat);
   }
 };
-export { Chat, message }
+export {
+  Chat,
+  OpenaiChat,
+  getResponse,
+  ChatProps,
+  OpenaiChatProps,
+  message
+}

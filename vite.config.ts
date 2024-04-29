@@ -1,8 +1,10 @@
 import { fileURLToPath, URL } from 'node:url'
+import { rm } from 'node:fs/promises';
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts';
 import libCss from 'vite-plugin-libcss';
+import obfuscatorPlugin from 'vite-plugin-javascript-obfuscator';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,13 +13,20 @@ export default defineConfig({
     dts({
       tsconfigPath: './tsconfig.build.json'
     }),
-    libCss()
+    libCss(),
+    obfuscatorPlugin(),
+    {
+      name: 'clean-examples',
+      writeBundle() {
+        rm('dist/examples_public', { recursive: true, force: true }); // remove 
+      }
+    },
   ],
   build: {
     outDir: 'dist',
     minify: true,
     cssCodeSplit: true,
-    rollupOptions:{
+    rollupOptions: {
       external: ['vue'],
       output: {
         globals: {
@@ -29,7 +38,7 @@ export default defineConfig({
     lib: {
       entry: 'packages/index.ts',
       name: 'components',
-      fileName:(format) => `components.${format}.js`,
+      fileName: (format) => `components.${format}.js`,
       formats: ['umd', 'es', 'cjs']
     }
   },

@@ -1,6 +1,5 @@
-//Project Name: ChatUiVue3
-//魔改自@chat-ui/vue3 : https://github.com/nvima/chat-ui
-//adaptor: zayn
+//Project Name: ChatUiVue3 //魔改自@chat-ui/vue3 :
+https://github.com/nvima/chat-ui //adaptor: zayn
 <template>
   <div>
     <div
@@ -123,44 +122,44 @@ import ChatMessages from "./ChatMessages.vue";
 import ChatInput from "./ChatInput.vue";
 import ChatHeader from "./ChatHeader.vue";
 import ChatIcon from "./ChatIcon.vue";
-import type { message } from './message';
+import type { message } from "./message";
 
 import { ref } from "vue";
+export type ChatProps = {
+  bgColorIcon?: string;
+  margin?: string;
+  fillColorIcon?: string;
+  width?: string;
+  height?: string;
+  boxShadow?: string;
+  headerHeight?: string;
+  bgColorHeader?: string;
+  textColorHeader?: string;
+  offline?: boolean;
+  colorOffline?: string;
+  colorOnline?: string;
+  bgColorChat?: string;
+  bgColorMessageChatbot?: string;
+  bgColorMessagePerson?: string;
+  bgColorMessageTimestamp?: string;
+  textColorMessageChatbot?: string;
+  textColorMessagePerson?: string;
+  textColorMessageTimestamp?: string;
+  chat: message[];
+  onSend: (message: string) => void;
+  inputHeight?: string;
+  bgColorInput?: string;
+  textColorInput?: string;
+  inputPlaceholder?: string;
+  botName?: string;
+};
+defineProps<ChatProps>();
+const chatOpen = ref<boolean>(false);
 
-  defineProps<{
-    bgColorIcon?: string,
-    margin?: string,
-    fillColorIcon?: string,
-    width?: string,
-    height?: string,
-    boxShadow?: string,
-    headerHeight?: string,
-    bgColorHeader?: string,
-    textColorHeader?: string,
-    offline?: boolean,
-    colorOffline?: string,
-    colorOnline?: string,
-    bgColorChat?: string,
-    bgColorMessageChatbot?: string,
-    bgColorMessagePerson?: string,
-    bgColorMessageTimestamp?: string,
-    textColorMessageChatbot?: string,
-    textColorMessagePerson?: string,
-    textColorMessageTimestamp?: string,
-    chat: message[],
-    onSend: (message: string) => void,
-    inputHeight?: string,
-    bgColorInput?: string,
-    textColorInput?: string,
-    inputPlaceholder?: string,
-    botName?: string
-  }>()
-  const chatOpen = ref<boolean>(false);
-
-  function stateCloseChat() {
-      chatOpen.value = false;
-  }
-  function stateOpenChat() {
-      chatOpen.value = true;
-  }
+function stateCloseChat() {
+  chatOpen.value = false;
+}
+function stateOpenChat() {
+  chatOpen.value = true;
+}
 </script>
