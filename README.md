@@ -1,9 +1,10 @@
 # my components
-
 ## Current components:
 
-- HelloWorld (for test only)
 - Chatui (mod from @chat-ui/vue3, add some features)
+- Openai Chat (support openai api and stream transmition)  
+
+![Openai Chat](https://github.com/DSYZayn/components/blob/main/public/examples_public/example.gif)
 
 # usage
 
