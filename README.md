@@ -1,4 +1,6 @@
 # my components
+Here are some components that I made for my projects.
+
 ## Current components:
 
 - Chatui (mod from @chat-ui/vue3, add some features)
@@ -13,7 +15,37 @@ npm install @heyzayn/components
 ```
 
 ## Chatui
-
+### Type hints
+```typescript
+export type ChatProps = {
+  bgColorIcon?: string;
+  margin?: string;
+  fillColorIcon?: string;
+  width?: string;
+  height?: string;
+  boxShadow?: string;
+  headerHeight?: string;
+  bgColorHeader?: string;
+  textColorHeader?: string;
+  offline?: boolean;
+  colorOffline?: string;
+  colorOnline?: string;
+  bgColorChat?: string;
+  bgColorMessageChatbot?: string;
+  bgColorMessagePerson?: string;
+  bgColorMessageTimestamp?: string;
+  textColorMessageChatbot?: string;
+  textColorMessagePerson?: string;
+  textColorMessageTimestamp?: string;
+  chat: message[];
+  onSend: (message: string) => void;
+  inputHeight?: string;
+  bgColorInput?: string;
+  textColorInput?: string;
+  inputPlaceholder?: string;
+  botName?: string;
+};
+```
 ```vue
 <script setup lang="ts">
 import { ref } from "vue";
@@ -65,7 +97,27 @@ div {
 ```
 
 ## Openai Chat
+### Type hints
+```typescript
+export type OpenaiChatProps = Omit<ChatProps, "onSend" | "chat"> & {
+  openaikey: string;
+  systemMessage?: string;
+  params?: Parameters<typeof setParams>[0];
+  firstMessage?: string;
+};
+```
+The params type should be like part of this(program will merge the params with default params):
+```typescript
+let params = {
+    model: "gpt-3.5-turbo",
+    max_tokens: 4000,
+    tempature: 0.2,
+    stream: "true"
+}
+```
 
+### Example
+You can just use it with your own openai key, it support stream transmition and system message(you should set props if you want to use it).
 ```vue
 <script setup lang="ts">
 import { ref } from "vue";
