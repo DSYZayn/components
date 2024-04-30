@@ -8,12 +8,14 @@ import {
   setKey,
   setParams,
   setSystemMsg,
+  setProxyURL,
   type message,
 } from "../utils/OpenaiClient";
 import formatAMPM from "../utils/formatAMPM";
 
 export type OpenaiChatProps = Omit<ChatProps, "onSend" | "chat"> & {
   openaikey: string;
+  proxyUrl?: string;
   systemMessage?: string;
   params?: Parameters<typeof setParams>[0];
   firstMessage?: string;
@@ -22,6 +24,7 @@ onMounted(() => {
   setKey(props.openaikey);
   props.params && setParams(props.params);
   props.systemMessage && setSystemMsg(props.systemMessage);
+  props.proxyUrl && setProxyURL(props.proxyUrl);
 });
 const props = defineProps<OpenaiChatProps>();
 
@@ -80,7 +83,7 @@ async function handleSendEvent(input: string) {
       break;
     }
     const answer = new TextDecoder().decode(value);
-    const answer_data = answer.match(expression)?.join("");
+    const answer_data = answer.match(expression)?.join("").replace(/\s","role":"assistant/g, "");
 
     //必须先转译\n，否则会导致无法正常换行
     msg.value += answer_data ? answer_data.replace(/\\n/g, "\n") : "";

@@ -5,6 +5,7 @@ Here are some components that I made for my projects.
 
 - Chatui (mod from @chat-ui/vue3, add some features)
 - Openai Chat (support openai api and stream transmition)  
+Tips: openai chat only adapt for chatanywhere and one api project, if you have another api provider, I don't guarantee it will work.
 
 ![Openai Chat](https://github.com/DSYZayn/components/blob/main/public/examples_public/example.gif)
 
@@ -101,6 +102,7 @@ div {
 ```typescript
 export type OpenaiChatProps = Omit<ChatProps, "onSend" | "chat"> & {
   openaikey: string;
+  proxyUrl?: string;
   systemMessage?: string;
   params?: Parameters<typeof setParams>[0];
   firstMessage?: string;
@@ -111,10 +113,15 @@ The params type should be like part of this(program will merge the params with d
 let params = {
     model: "gpt-3.5-turbo",
     max_tokens: 4000,
-    tempature: 0.2,
+    temperature: 0.2,
     stream: "true"
 }
 ```
+The proxyUrl is your openai api url, if you don't have one, you can use the default one(https://api.openai.com/v1/engines/davinci/completions), you don't need to set it if you use the default one.
+
+The key should match your openai api url, ask your openai api provider for it.
+
+Recommend to use the chatanywhere to get a test key, then you only need to set the key in this component .
 
 ### Example
 You can just use it with your own openai key, it support stream transmition and system message(you should set props if you want to use it).

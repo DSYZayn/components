@@ -9,13 +9,14 @@ openaiHeaders.append("Connection", "keep-alive")
 openaiHeaders.append("Access-Control-Allow-Origin", "*")
 
 const isKeySettled = ref<boolean>(false)
+let proxyURL:string = undefined ?? "https://api.openai.com/v1/engines/davinci/completions";
 
 let params = {
     // model: "gpt-3.5-turbo",
     model: "gpt-3.5-turbo-0125",
     max_tokens: 4000,
-    tempature: 0.2,
-    stream: "true"
+    temperature: 0.2,
+    stream: true
 }
 
 const data = ref({
@@ -43,7 +44,7 @@ export const getResponse = async (message: message<"user">): Promise<ReadableStr
     }
     data.value.messages.push(message)
 
-    const response = await fetch("https://api.chatanywhere.tech/v1/chat/completions", requestOptions.value)
+    const response = await fetch(proxyURL, requestOptions.value)
     if (!response.ok) {
         return response.body;
     }
@@ -66,6 +67,9 @@ export function setSystemMsg(msg: string) {
         role: 'system',
         content: msg
     }
+}
+export function setProxyURL(url: string) {
+    proxyURL = url;
 }
 //转发Host1: https://api.chatanywhere.tech (国内中转，延时更低，host1和host2二选一)
 //转发Host2: https://api.chatanywhere.com.cn (国内中转，延时更低，host1和host2二选一)
