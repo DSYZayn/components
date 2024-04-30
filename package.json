@@ -1,6 +1,6 @@
 {
   "name": "@heyzayn/components",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "type": "module",
   "main": "dist/components.cjs.js",
   "module": "dist/components.es.js",

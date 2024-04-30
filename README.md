@@ -117,7 +117,7 @@ let params = {
     stream: "true"
 }
 ```
-The proxyUrl is your openai api url, if you don't have one, you can use the default one(https://api.openai.com/v1/engines/davinci/completions), you don't need to set it if you use the default one.
+The proxyUrl is your openai api url, if you don't have one, you can use the default one(https://api.chatanywhere.com.cn/v1/completions), you don't need to set it if you use the default one.
 
 The key should match your openai api url, ask your openai api provider for it.
 

@@ -9,7 +9,7 @@ openaiHeaders.append("Connection", "keep-alive")
 openaiHeaders.append("Access-Control-Allow-Origin", "*")
 
 const isKeySettled = ref<boolean>(false)
-let proxyURL:string = undefined ?? "https://api.openai.com/v1/engines/davinci/completions";
+let proxyURL:string = undefined ?? "https://api.chatanywhere.com.cn/v1/completions";
 
 let params = {
     // model: "gpt-3.5-turbo",
