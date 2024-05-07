@@ -3,6 +3,7 @@ import Chat, { type ChatProps } from './Chat.vue';
 import OpenaiChat, { type OpenaiChatProps } from './OpenaiChat.vue';
 import getResponse from '../utils/Boredapi';
 import { type message } from './message';
+import '../assets/style.css';
 
 export const ChatPlugin: Plugin = {
   install(app: App) {

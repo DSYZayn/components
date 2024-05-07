@@ -5,6 +5,8 @@ Here are some components that I made for my projects.
 
 - Chatui (mod from @chat-ui/vue3, add some features)
 - Openai Chat (support openai api and stream transmition)  
+
+Support render markdown text.  
 Tips: openai chat only adapt for chatanywhere and one api project, if you have another api provider, I don't guarantee it will work.
 
 ![Openai Chat](https://github.com/DSYZayn/components/blob/main/public/examples_public/example.gif)
@@ -125,6 +127,7 @@ Recommend to use the chatanywhere to get a test key, then you only need to set t
 
 ### Example
 You can just use it with your own openai key, it support stream transmition and system message(you should set props if you want to use it).
+
 ```vue
 <script setup lang="ts">
 import { ref } from "vue";
@@ -139,5 +142,6 @@ const key = import.meta.env.VITE_OPENAI_KEY;
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>
 ```

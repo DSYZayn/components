@@ -11,7 +11,7 @@
       padding: '1.5rem',
     }"
   >
-    <template :key="index" v-for="(chatMessage, _) in chat">
+    <template v-for="(chatMessage, _) in chat">
       <div>
         <template v-if="chatMessage.type == 'person'">
           <div class="div">
@@ -60,7 +60,7 @@
                 </div>
               </template>
 
-              {{ chatMessage.message }}
+              <VMdPreview :text="chatMessage.message" />
             </div>
           </div>
         </template>
@@ -72,6 +72,15 @@
 <script lang="ts" setup>
 import { ref, defineProps, watch, computed } from "vue";
 import { type message } from "./message";
+import hljs from "highlight.js";
+import VMdPreview from '@kangc/v-md-editor/lib/preview';
+import '@kangc/v-md-editor/lib/style/preview.css';
+import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
+import '@kangc/v-md-editor/lib/theme/style/github.css';
+
+VMdPreview.use(githubTheme, {
+  Hljs: hljs
+});
 
 const props = defineProps<{
   bgColorChat?: string;
@@ -88,7 +97,6 @@ const chatContainer = ref<HTMLDivElement | null>(null);
 const chatElementAdded = ref(false);
 
 const onUpdateHook0 = computed(() => props.chat.length);
-console.log(props.chat[-1]);
 
 const onUpdatedHook1 = computed(() => props.chat.at(-1)?.message?.length);
 
@@ -112,6 +120,8 @@ function scrollToEnd(container: HTMLElement) {
 </script>
 
 <style scoped>
+
+
 .div {
   position: relative;
 }
@@ -159,5 +169,15 @@ function scrollToEnd(container: HTMLElement) {
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 2px;
   padding: 0.25rem;
   z-index: 9999;
+}
+:deep(.github-markdown-body){
+  padding: 0;
+}
+:deep(.github-markdown-body p) {
+  margin-bottom: 0;
+  display: inline-block;
+}
+:deep(.github-markdown-body .v-md-pre-wrapper pre) {
+  margin-bottom: 0;
 }
 </style>

@@ -1,6 +1,6 @@
 {
   "name": "@heyzayn/components",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "type": "module",
   "main": "dist/components.cjs.js",
   "module": "dist/components.es.js",
@@ -56,5 +56,9 @@
     "vite-plugin-libcss": "^1.1.1",
     "vue": "^3.4.21",
     "vue-tsc": "^2.0.6"
+  },
+  "dependencies": {
+    "@kangc/v-md-editor": "^2.3.18",
+    "highlight.js": "^11.9.0"
   }
 }

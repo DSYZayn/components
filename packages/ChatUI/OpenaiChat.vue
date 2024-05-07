@@ -1,32 +1,34 @@
 <script setup lang="ts">
 import Chat, { type ChatProps } from "./Chat.vue";
 import { type message as messageType } from "./message";
-import { onMounted, ref, watch } from "vue";
-import {
-  setAssistantMsg,
-  getResponse,
-  setKey,
-  setParams,
-  setSystemMsg,
-  setProxyURL,
-  type message,
-} from "../utils/OpenaiClient";
+import { ref, watch } from "vue";
+import { OpenaiClient, type params , type message } from "../utils/OpenaiClient";
+// import {
+//   setAssistantMsg,
+//   getResponse,
+//   setKey,
+//   setParams,
+//   setSystemMsg,
+//   setProxyURL,
+//   type message,
+// } from "../utils/OpenaiClient";
 import formatAMPM from "../utils/formatAMPM";
 
 export type OpenaiChatProps = Omit<ChatProps, "onSend" | "chat"> & {
   openaikey: string;
   proxyUrl?: string;
   systemMessage?: string;
-  params?: Parameters<typeof setParams>[0];
+  params?: Partial<params>;
   firstMessage?: string;
 };
-onMounted(() => {
-  setKey(props.openaikey);
-  props.params && setParams(props.params);
-  props.systemMessage && setSystemMsg(props.systemMessage);
-  props.proxyUrl && setProxyURL(props.proxyUrl);
-});
+
 const props = defineProps<OpenaiChatProps>();
+const client = new OpenaiClient(
+  props.openaikey, 
+  props.proxyUrl, 
+  props.params,
+  props.systemMessage
+)
 
 const chatOffline = ref(false);
 const chatData = ref<messageType[]>([
@@ -51,7 +53,7 @@ async function handleSendEvent(input: string) {
     role: "user",
     content: input,
   };
-  const response = await getResponse(message_input);
+  const response = await client.getResponse(message_input);
   if (response === null) {
     chatOffline.value = true;
   }
@@ -76,15 +78,15 @@ async function handleSendEvent(input: string) {
     const { done, value } = await reader.read();
     if (done) {
       result = false;
-      setAssistantMsg({
+      client.setAssistantMsg({
         role: "assistant",
         content: msg.value,
       });
       break;
     }
     const answer = new TextDecoder().decode(value);
-    const answer_data = answer.match(expression)?.join("").replace(/\s","role":"assistant/g, "");
-
+    const answer_data = answer.match(expression)?.join("").replace(/","role":"assistant/g, "");
+    
     //必须先转译\n，否则会导致无法正常换行
     msg.value += answer_data ? answer_data.replace(/\\n/g, "\n") : "";
   }
