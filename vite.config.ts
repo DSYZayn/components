@@ -8,6 +8,10 @@ import obfuscatorPlugin from 'vite-plugin-javascript-obfuscator';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  esbuild:{
+    pure: ['console.log'],
+    drop: ['debugger']
+  },
   plugins: [
     vue(),
     dts({
@@ -26,6 +30,9 @@ export default defineConfig({
     outDir: 'dist',
     minify: true,
     cssCodeSplit: true,
+    commonjsOptions: {
+      esmExternals: true
+    },
     rollupOptions: {
       external: ['vue'],
       output: {

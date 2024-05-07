@@ -61,12 +61,10 @@ export class OpenaiClient {
                 messages: this.data.value.messages,
                 ...this.params
             }
-            console.log(this.data.value);
         }
     }
     async getResponse(this: OpenaiClient, message: message<"user">): Promise<ReadableStream<Uint8Array> | null> {
         this.data.value.messages.push(message)
-        console.log(this.data.value);
 
         const response = await fetch(this.proxyUrl, this.requestOptions.value)
         if (!response.ok) {

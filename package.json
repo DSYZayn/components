@@ -1,6 +1,6 @@
 {
   "name": "@heyzayn/components",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "type": "module",
   "main": "dist/components.cjs.js",
   "module": "dist/components.es.js",
@@ -8,6 +8,7 @@
   "keywords": [
     "vue3",
     "components",
+    "vue3-chatui",
     "chatui",
     "chatui-vue3",
     "vue3-chatui",
@@ -37,6 +38,7 @@
     "@deck.gl/geo-layers": "^9.0.9",
     "@deck.gl/layers": "^9.0.9",
     "@heyzayn/arcgis-tdtlayer": "^1.0.4",
+    "@heyzayn/components": "^0.0.9",
     "@types/d3-scale": "^4.0.8",
     "@types/node": "^20.12.7",
     "@vitejs/plugin-vue": "^5.0.4",
