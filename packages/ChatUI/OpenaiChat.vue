@@ -2,7 +2,7 @@
 import Chat, { type ChatProps } from "./Chat.vue";
 import { type message as messageType } from "./message";
 import { ref, watch } from "vue";
-import { OpenaiClient, type params , type message } from "../utils/OpenaiClient";
+import { OpenaiClient, type params, type message } from "../utils/OpenaiClient";
 // import {
 //   setAssistantMsg,
 //   getResponse,
@@ -24,11 +24,11 @@ export type OpenaiChatProps = Omit<ChatProps, "onSend" | "chat"> & {
 
 const props = defineProps<OpenaiChatProps>();
 const client = new OpenaiClient(
-  props.openaikey, 
-  props.proxyUrl, 
+  props.openaikey,
+  props.proxyUrl,
   props.params,
   props.systemMessage
-)
+);
 
 const chatOffline = ref(false);
 const chatData = ref<messageType[]>([
@@ -86,7 +86,7 @@ async function handleSendEvent(input: string) {
     }
     const answer = new TextDecoder().decode(value);
     const answer_data = answer.match(expression)?.join("").replace(/","role":"assistant/g, "");
-    
+
     //必须先转译\n，否则会导致无法正常换行
     msg.value += answer_data ? answer_data.replace(/\\n/g, "\n") : "";
   }
