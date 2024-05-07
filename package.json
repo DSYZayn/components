@@ -1,6 +1,6 @@
 {
   "name": "@heyzayn/components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "dist/components.cjs.js",
   "module": "dist/components.es.js",
@@ -38,7 +38,6 @@
     "@deck.gl/geo-layers": "^9.0.9",
     "@deck.gl/layers": "^9.0.9",
     "@heyzayn/arcgis-tdtlayer": "^1.0.4",
-    "@heyzayn/components": "^0.0.9",
     "@types/d3-scale": "^4.0.8",
     "@types/node": "^20.12.7",
     "@vitejs/plugin-vue": "^5.0.4",
@@ -60,7 +59,6 @@
     "vue-tsc": "^2.0.6"
   },
   "dependencies": {
-    "@kangc/v-md-editor": "^2.3.18",
-    "highlight.js": "^11.9.0"
+    "@kangc/v-md-editor": "^1.7.12"
   }
 }
