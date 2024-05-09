@@ -43,6 +43,7 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ['vue',
+        'highlight.js',
         '@kangc/v-md-editor@next',
         '@kangc/v-md-editor/lib/preview.js',
         '@kangc/v-md-editor/lib/style/preview.css',
@@ -51,6 +52,7 @@ export default defineConfig({
       output: {
         globals: {
           vue: 'Vue',
+          'highlight.js': 'hljs',
           '@kangc/v-md-editor@next': 'KangcVMdEditor'
         },
         dir: 'dist'

@@ -20,6 +20,7 @@ Normally, it will automatically install all the dependencies, if not, you must i
 ```sh
 npm install @kangc/v-md-editor@next
 # the addition `@next` is necessary, because @next version is for vue3
+npm install highlight.js
 ```
 
 ## Chatui
