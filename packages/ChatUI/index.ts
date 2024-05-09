@@ -1,8 +1,8 @@
 import type { App, Plugin } from 'vue';
-import Chat, { type ChatProps } from './Chat.vue';
-import OpenaiChat, { type OpenaiChatProps } from './OpenaiChat.vue';
-import getResponse from '../utils/Boredapi';
-import { type message } from './message';
+import Chat, { type ChatProps } from './components/Chat.vue';
+import OpenaiChat, { type OpenaiChatProps } from './components/OpenaiChat.vue';
+import getResponse from './utils/Boredapi';
+import { type message } from './types/message';
 import '../assets/style.css';
 
 export const ChatPlugin: Plugin = {

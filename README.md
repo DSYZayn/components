@@ -7,7 +7,7 @@ Here are some components that I made for my projects.
 - Openai Chat (support openai api and stream transmition)  
 
 Support render markdown text.  
-Tips: openai chat only adapt for chatanywhere and one api project, if you have another api provider, I don't guarantee it will work.
+Tips: openai chat only adapt for chatanywhere, deepseek and one api project, if you have another api provider, I don't guarantee it will work.
 
 ![Openai Chat](https://github.com/DSYZayn/components/blob/main/public/examples_public/example.gif)
 
@@ -15,6 +15,11 @@ Tips: openai chat only adapt for chatanywhere and one api project, if you have a
 
 ```sh
 npm install @heyzayn/components
+```
+Normally, it will automatically install all the dependencies, if not, you must install them manually.
+```sh
+npm install @kangc/v-md-editor@next
+# the addition `@next` is necessary, because @next version is for vue3
 ```
 
 ## Chatui
@@ -116,10 +121,10 @@ let params = {
     model: "gpt-3.5-turbo",
     max_tokens: 4000,
     temperature: 0.2,
-    stream: "true"
+    stream: true
 }
 ```
-The proxyUrl is your openai api url, if you don't have one, you can use the default one(https://api.chatanywhere.com.cn/v1/completions), you don't need to set it if you use the default one.
+The proxyUrl is your openai api url, if you don't have one, you can use the default one(https://api.chatanywhere.com.cn/v1/chat/completions), you don't need to set it if you use the default one.
 
 The key should match your openai api url, ask your openai api provider for it.
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Chat, { type ChatProps } from "./Chat.vue";
-import { type message as messageType } from "./message";
+import { type message as messageType } from "../types/message";
 import { ref, watch } from "vue";
 import { OpenaiClient, type params, type message } from "../utils/OpenaiClient";
 // import {

@@ -71,9 +71,9 @@
 
 <script lang="ts" setup>
 import { ref, defineProps, watch, computed } from "vue";
-import { type message } from "./message";
+import { type message } from "../types/message";
 import hljs from "highlight.js";
-import VMdPreview from '@kangc/v-md-editor/lib/preview';
+import VMdPreview from '@kangc/v-md-editor/lib/preview.js';
 import '@kangc/v-md-editor/lib/style/preview.css';
 import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
 import '@kangc/v-md-editor/lib/theme/style/github.css';

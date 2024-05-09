@@ -122,7 +122,7 @@ import ChatMessages from "./ChatMessages.vue";
 import ChatInput from "./ChatInput.vue";
 import ChatHeader from "./ChatHeader.vue";
 import ChatIcon from "./ChatIcon.vue";
-import type { message } from "./message";
+import type { message } from "../types/message";
 
 import { ref } from "vue";
 export type ChatProps = {

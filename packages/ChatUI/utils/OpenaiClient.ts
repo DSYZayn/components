@@ -11,7 +11,7 @@ export type message<T extends "user" | "assistant" | "system"> = {
     content: string
 }
 export class OpenaiClient {
-    private proxyUrl: string = "https://api.chatanywhere.com.cn/v1/completions";
+    private proxyUrl: string = "https://api.chatanywhere.com.cn/v1/chat/completions";
     private params: params = {
         // model: "gpt-3.5-turbo",
         model: "gpt-3.5-turbo-0125",
@@ -38,7 +38,7 @@ export class OpenaiClient {
 
         openaiHeaders.append("Authorization", "Bearer " + key);
         const that = this;
-        this.requestOptions = computed(function(): RequestInit {
+        this.requestOptions = computed(function (): RequestInit {
             return {
                 method: "POST",
                 headers: openaiHeaders,
